@@ -1,27 +1,40 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Login</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Linking CSS -->
 </head>
 <body>
 
-    <div class="container">
-        <h2>Enter Your Name</h2>
-        <form id="nameForm">
-            <label for="fname">First Name:</label>
-            <input type="text" id="fname" name="fname" placeholder="Enter first name"><br>
+    <form id="userForm">
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" required>
+        
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" required>
 
-            <label for="lname">Last Name:</label>
-            <input type="text" id="lname" name="lname" placeholder="Enter last name"><br>
+        <button type="submit">Submit</button>
+    </form>
 
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+    <script>
+        function getFormvalue(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+            
+            let firstName = document.querySelector('input[name="fname"]').value.trim();
+            let lastName = document.querySelector('input[name="lname"]').value.trim();
+            
+            if (firstName === "" || lastName === "") {
+                alert("Please enter both First Name and Last Name.");
+                return;
+            }
 
-    <script src="script.js"></script> <!-- Linking JavaScript -->
+            alert(firstName + " " + lastName);
+        }
+
+        document.getElementById("userForm").addEventListener("submit", getFormvalue);
+    </script>
+
 </body>
 </html>
-
