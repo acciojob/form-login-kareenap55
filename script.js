@@ -1,20 +1,16 @@
-function getFormvalue() {
-    //Write your code here
-	document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("userForm").addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent the form from submitting and refreshing the page
+document.getElementById("nameForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form from refreshing the page
 
-        let firstName = document.getElementById("fname").value.trim();
-        let lastName = document.getElementById("lname").value.trim();
+    // Get input values and trim extra spaces
+    let firstName = document.querySelector('input[name="fname"]').value.trim();
+    let lastName = document.querySelector('input[name="lname"]').value.trim();
 
-        if (firstName === "" || lastName === "") {
-            alert("Please enter both First Name and Last Name.");
-            return;
-        }
+    // Check if fields are empty
+    if (!firstName || !lastName) {
+        alert("Please enter both First Name and Last Name.");
+        return;
+    }
 
-        alert(firstName + " " + lastName);
-    });
+    // Display full name
+    alert(firstName + " " + lastName);
 });
-
-
-}
